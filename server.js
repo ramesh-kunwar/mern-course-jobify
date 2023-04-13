@@ -1,6 +1,6 @@
 const express = require("express")
 const notFoundMiddleware = require("./middleware/notFound")
-const errorhandlerMiddleware = require("./middleware/errorHandler")
+
 const connectWithDb = require("./db/db")
 
 // Router
@@ -8,6 +8,8 @@ const authRouter = require("./routes/authRoutes")
 const jobRouter = require("./routes/jobRoutes")
 
 require("dotenv").config()
+require('express-async-errors');
+
 
 const app = express()
 
@@ -37,7 +39,7 @@ app.get("/", (req, res) => {
 
 // middleware
 app.use(notFoundMiddleware)
-app.use(errorhandlerMiddleware)
+
 
 
 
